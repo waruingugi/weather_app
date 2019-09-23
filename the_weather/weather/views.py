@@ -16,7 +16,8 @@ def index(request):
     if request.method == 'POST': #only true if form is submitted
         form = CityForm(request.POST) #add actual request data to form for processing
 
-        if not City.objects.filter(name=form['name'].value()).exists(): #only saves if city does not exist
+        if not City.objects.filter(name=form['name'].value()).exists() and (requests.get(url.format(form['name'].value())).status_code == 200): #only saves if city is valid
+            #and does not exist
             form.save() # will validate and save if validate
 
     form = CityForm()
