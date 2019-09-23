@@ -1,0 +1,8 @@
+#Do not track content of this files
+
+env
+*.DS_Store
+*.pyc
+__pycache__
+*.sqlite3
+
